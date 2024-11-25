@@ -23,7 +23,7 @@ type Item struct {
 }
 
 func main() {
-	fmt.Println("main invoked!")
+	fmt.Println("func main invoked!")
 	router := mux.NewRouter()
     router.HandleFunc("/receipts/process", ProcessReceiptsHandler)
 	router.HandleFunc("/receipts/{id}/points", GetPointsHandler)
@@ -31,9 +31,9 @@ func main() {
 }
 
 func ProcessReceiptsHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("ProcessReceiptsHandler invoked!")
+	fmt.Println("func ProcessReceiptsHandler invoked!")
 }
 
 func GetPointsHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("GetPointsHandler invoked!")
+	fmt.Println("func GetPointsHandler invoked!")
 }
