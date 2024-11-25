@@ -1,0 +1,5 @@
+module github.com/qpgdev/fetch-technical-11.24
+
+go 1.23.3
+
+require github.com/gorilla/mux v1.8.1 // indirect
