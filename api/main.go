@@ -3,10 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 	"regexp"
+	"github.com/gorilla/mux"
+	"receipt-processor-challenge/api/handlers/receipts"
 )
 
 type Receipts struct {
@@ -28,12 +29,6 @@ func main() {
     router.HandleFunc("/receipts/process", ProcessReceiptsHandler)
 	router.HandleFunc("/receipts/{id}/points", GetPointsHandler)
     http.Handle("/", router)
-}
 
-func ProcessReceiptsHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("func ProcessReceiptsHandler invoked!")
-}
-
-func GetPointsHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("func GetPointsHandler invoked!")
+	log.Fatal(http.ListenAndServe(":8080", router))
 }
