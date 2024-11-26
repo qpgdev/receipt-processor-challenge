@@ -1,4 +1,4 @@
-module github.com/qpgdev/fetch-technical-11.24
+module github.com/qpgdev/receipt_processor_challenge
 
 go 1.23.3
 

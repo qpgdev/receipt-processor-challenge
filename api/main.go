@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"regexp"
 	"github.com/gorilla/mux"
-	"receipt-processor-challenge/api/handlers/receipts"
 )
 
 type Receipts struct {
@@ -31,4 +30,13 @@ func main() {
     http.Handle("/", router)
 
 	log.Fatal(http.ListenAndServe(":8080", router))
+}
+
+func ProcessReceiptsHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("func ProcessReceiptsHandler invoked!")
+
+}
+
+func GetPointsHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("func GetPointsHandler invoked!")
 }
