@@ -1,4 +1,5 @@
-### Running the development image
+### Running the docker image
+- Navigate to '/api' directory in the terminal -> `cd /api`
 - Run ```docker-compose build```
 - Run ```docker-compose up```
 - Navigate to http://localhost:8000/

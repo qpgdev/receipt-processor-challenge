@@ -14,7 +14,6 @@ router.post("/receipts/process", async (req, res) => {
 router.get("/receipts/:id/points", async (req, res) => {
   const { id } = req.params;
   const controller = new ReceiptsController();
-  //const controller = new ReceiptsController(req.params.id);
   const response = await controller.getPoints(id);
   res.send(response);
   return;

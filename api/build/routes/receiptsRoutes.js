@@ -13,11 +13,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const ping_1 = __importDefault(require("../controllersreceipts"));
+const ReceiptsController_1 = __importDefault(require("../controllers/ReceiptsController"));
 const router = express_1.default.Router();
-router.get("receipts", (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const controller = new ping_1.default();
-    const response = yield controller.getMessage();
+router.post("/receipts/process", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const controller = new ReceiptsController_1.default();
+    const response = yield controller.processReceipt(req.body);
+    res.send(response);
+    return;
+}));
+router.get("/receipts/:id/points", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const controller = new ReceiptsController_1.default();
+    //const controller = new ReceiptsController(req.params.id);
+    const response = yield controller.getPoints(id);
     res.send(response);
     return;
 }));
