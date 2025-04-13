@@ -1,6 +1,9 @@
 import express, { Application } from "express";
 import morgan from "morgan";
-import Router from "./routes/receiptsRoutes";
+import ReceiptsRouter from "./routes/receiptsRoutes";
+import { ReceiptData } from "./types/receiptTypes"
+
+export const receiptStore = new Map<string, ReceiptData>();
 
 const PORT = process.env.PORT || 8000;
 
@@ -10,8 +13,8 @@ app.use(express.json());
 app.use(morgan("tiny"));
 app.use(express.static("public"));
 
-app.use(Router);
+app.use(ReceiptsRouter);
 
 app.listen(PORT, () => {
-    console.log("Server is running on port", PORT);
+  console.log("Server is running on port", PORT);
 })
