@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/receipts", async (_req, res) => {
   const controller = new ReceiptsController();
-  const response = await controller.getMessage();
+  const response = await controller.processReceipt();
   res.send(response);
   return;
 });
