@@ -13,9 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const ping_1 = __importDefault(require("../controllers/ping"));
+const ping_1 = __importDefault(require("../controllersreceipts"));
 const router = express_1.default.Router();
-router.get("/ping", (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("receipts", (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const controller = new ping_1.default();
     const response = yield controller.getMessage();
     res.send(response);

@@ -19,7 +19,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const tsoa_1 = require("tsoa");
-let PingController = class PingController {
+let ReceiptsController = class ReceiptsController {
     getMessage() {
         return __awaiter(this, void 0, void 0, function* () {
             return {
@@ -33,8 +33,8 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], PingController.prototype, "getMessage", null);
-PingController = __decorate([
+], ReceiptsController.prototype, "getMessage", null);
+ReceiptsController = __decorate([
     (0, tsoa_1.Route)("ping")
-], PingController);
-exports.default = PingController;
+], ReceiptsController);
+exports.default = ReceiptsController;
