@@ -6,7 +6,6 @@ import {
   PointsResponse,
 } from "../types/receiptTypes";
 
-
 export default class ReceiptsController {
   public async processReceipt(
     receiptData: ReceiptData,
@@ -99,10 +98,11 @@ export default class ReceiptsController {
     items: Array<{ shortDescription: string; price: string }>,
   ): number {
     let points = 0;
-    items.forEach(item => {
-      if(item.shortDescription.trim().length % 3 === 0) {
-        points += Math.round(Number(item.price))
-      }})
+    items.forEach((item) => {
+      if (item.shortDescription.trim().length % 3 === 0) {
+        points += Math.round(Number(item.price));
+      }
+    });
 
     return points;
   }
