@@ -4,15 +4,8 @@ import {
   sampleReceipt,
   getPointsTestData,
 } from "./testData/receiptsRoutesTestData";
-
 import { app } from "../index";
 import { receiptStore } from "..";
-import { ReceiptData } from "../types/receiptTypes";
-import ReceiptsRouter from "../routes/receiptsRoutes";
-import express, { Application } from "express";
-
-// TODO: Change to a testApp and testReceiptStore
-// TODO: Use both example receipts given
 
 // Tests for Process Receipts endpoint
 request(app)

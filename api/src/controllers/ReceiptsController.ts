@@ -22,7 +22,6 @@ export default class ReceiptsController {
 
   public async getPoints(id: string): Promise<PointsResponse> {
     const receiptData = receiptStore.get(id);
-    console.log("receiptData", receiptData);
 
     if (!receiptData) {
       throw new Error("No receipt found for that ID.");
@@ -100,20 +99,20 @@ export default class ReceiptsController {
     items: Array<{ shortDescription: string; price: string }>,
   ): number {
     let points = 0;
-
-    // Logic goes here
+    items.forEach(item => {
+      if(item.shortDescription.trim().length % 3 === 0) {
+        points += Math.round(Number(item.price))
+      }})
 
     return points;
   }
 
   private calculateOddPurchaseDatePoints(purchaseDate: string): number {
-    // Check logic
     const purchaseDay = new Date(purchaseDate).getDate();
     return purchaseDay % 2 !== 0 ? 6 : 0;
   }
 
   private calculateAfternoonPurchaseTimePoints(purchaseTime: string): number {
-    // Check logic
     const purchaseHour = new Date(`1970-01-01T${purchaseTime}Z`).getHours();
     return purchaseHour >= 14 && purchaseHour < 16 ? 10 : 0;
   }
