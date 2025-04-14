@@ -1,7 +1,6 @@
 import express from "express";
 import ReceiptsController from "../controllers/ReceiptsController";
 
-
 const router = express.Router();
 
 router.post("/receipts/process", async (req, res) => {
