@@ -12,6 +12,7 @@ export const app: Application = express();
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(express.static("public"));
+
 app.use("/receipts", ReceiptsRouter);
 
 app.listen(PORT, () => {

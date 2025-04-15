@@ -5,29 +5,35 @@ import {
   ReceiptIdResponse,
   PointsResponse,
 } from "../types/receiptTypes";
+import { BadRequestError, NotFoundError } from "../utils/error";
 
 export default class ReceiptsController {
   public async processReceipt(
     receiptData: ReceiptData,
   ): Promise<ReceiptIdResponse> {
-    const receiptId = uuidv4();
+    try {
+      const receiptId = uuidv4();
 
-    receiptStore.set(receiptId, receiptData);
+      receiptStore.set(receiptId, receiptData);
 
-    return {
-      id: receiptId,
-    };
+      return {
+        id: receiptId,
+      };
+    } catch (error) {
+      throw new BadRequestError("Failed to process receipt.");
+    }
   }
 
   public async getPoints(id: string): Promise<PointsResponse> {
-    const receiptData = receiptStore.get(id);
+    try {
+      const receiptData = receiptStore.get(id);
 
     if (!receiptData) {
-      throw new Error("No receipt found for that ID.");
+      throw new NotFoundError("No receipt found for that ID.");
     }
 
     if (!this.isValidReceipt(receiptData)) {
-      throw new Error("The receipt is invalid.");
+      throw new BadRequestError("The receipt is invalid.");
     }
 
     const { retailer, total, items, purchaseDate, purchaseTime } = receiptData;
@@ -43,6 +49,9 @@ export default class ReceiptsController {
     points += this.calculateAfternoonPurchaseTimePoints(purchaseTime);
 
     return { points };
+    } catch (error) {
+      throw error;
+    }
   }
 
   private isValidReceipt(receiptData: ReceiptData): boolean {
